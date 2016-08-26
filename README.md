@@ -15,9 +15,9 @@
 <ol>  <B> 1. Using Java command : </B></ol>
 
 ``` 
-     ❯   java -cp com.example.rest.Main -jar target/orleans-swarm.jar 
+     ❯   java -cp com.example.rest.Main -jar target/wildflyDemo-swarm.jar
 
-         java -jar target/orleans-swarm.jar 
+         java -jar target/wildflyDemo-swarm.jar
 ```  
 <ol>  <B> 2. Using Maven command : </B></ol>
 
