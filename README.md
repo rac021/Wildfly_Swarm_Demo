@@ -3,12 +3,29 @@
 
 --------------------------------------------------------------
 
+
+ - **Package**
+ 
+``` 
+     ❯  mvn package
+
+```    
  - **Deployment**
  
+   * Using Java command : 
+
+``` 
+     ❯   java -cp com.example.rest.Main -jar target/orleans-swarm.jar 
+
+         java -jar target/orleans-swarm.jar 
+```  
+
+   * Using Maven command :
+  
 ``` 
      ❯  mvn -Dswarm.http.port=9090 wildfly-swarm:run
 
-```     
+```    
 
  - **Test**
  
