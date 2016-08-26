@@ -36,6 +36,20 @@
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <version>${version.wildfly.swarm}</version>
+        
+        <!-- Optionnal COnfiguration -->
+         <configuration>
+             <mainClass>com.example.rest.Main</mainClass>
+             <properties>
+               <swarm.http.port>8080</swarm.http.port> <!-- Already the default value -->
+               <swarm.context.path>/</swarm.context.path> <!-- Already the default value -->
+             </properties>
+             <jvmArguments>
+               <jvmArgument>-Xmx1024m</jvmArgument>
+             </jvmArguments>
+         </configuration>
+         <!-- End Optionnal COnfiguration -->
+         
         <executions>
           <execution>
             <goals>
