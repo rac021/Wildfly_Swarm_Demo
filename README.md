@@ -41,6 +41,10 @@
 --------------------------------------------------------------
 
 
-### *Link* : [WildFly Swarm Project Generator]( http://wildfly-swarm.io/generator)
+ - **Links** 
+
+   * [WildFly Swarm User’s Guide]( https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/index.html)
+
+   * [WildFly Swarm Project Generator]( http://wildfly-swarm.io/generator)
 
 
