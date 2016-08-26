@@ -30,7 +30,7 @@
   </dependencyManagement>
 
   <build>
-    <finalName>orleans</finalName>
+    <finalName>wildflyDemo</finalName>
     <plugins>
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
