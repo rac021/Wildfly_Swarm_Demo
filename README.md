@@ -12,16 +12,15 @@
 ```    
  - **Deployment**
  
-   * Using Java command : 
+<ol>  <B> 1. Using Java command : </B></ol>
 
 ``` 
      ❯   java -cp com.example.rest.Main -jar target/orleans-swarm.jar 
 
          java -jar target/orleans-swarm.jar 
 ```  
+<ol>  <B> 2. Using Maven command : </B></ol>
 
-   * Using Maven command :
-  
 ``` 
      ❯  mvn -Dswarm.http.port=9090 wildfly-swarm:run
 
