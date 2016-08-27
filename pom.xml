@@ -40,6 +40,7 @@
         <!-- Optionnal COnfiguration -->
          <configuration>
              <mainClass>com.example.rest.Main</mainClass>
+             <bundleDependencies>true</bundleDependencies>
              <properties>
                <swarm.http.port>8080</swarm.http.port> <!-- Already the default value -->
                <swarm.context.path>/</swarm.context.path> <!-- Already the default value -->
