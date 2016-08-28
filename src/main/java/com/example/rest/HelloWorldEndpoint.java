@@ -84,8 +84,7 @@ public class HelloWorldEndpoint {
            try {
 
                Builder request = ClientBuilder.newClient().target(url).request() ;
-               Thread.sleep(5000) ;
-      
+              
 	       return request.get(new GenericType<String>(){});
                          
 	   } catch ( Exception e) {
