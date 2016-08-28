@@ -1,4 +1,4 @@
 #/bin/bash
 
- java  -jar target/wildflyDemo-swarm.jar
+ java  -jar wildflyDemo-swarm.jar
 
