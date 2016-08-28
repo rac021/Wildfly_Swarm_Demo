@@ -13,8 +13,10 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.client.ClientBuilder;
 import com.netflix.hystrix.HystrixCommand;
 import javax.ws.rs.client.Invocation.Builder;
+import java.util.concurrent.ExecutionException;
 import com.netflix.config.ConfigurationManager;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+
 
 
 @Path("/hello")
@@ -50,28 +52,28 @@ public class HelloWorldEndpoint {
             /* Programatic Configuration */
            
             /*
-            ConfigurationManager.getConfigInstance()
-                                .setProperty("hystrix.command.CallEndPointCommand.circuitBreaker.requestVolumeThreshold", 30) ;
+            ConfigurationManager.getConfigInstance() .setProperty
+                                 ("hystrix.command.CallEndPointCommand.circuitBreaker.requestVolumeThreshold", 30) ;
 
-            ConfigurationManager.getConfigInstance()
-                                .setProperty("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds", 2000) ;
+            ConfigurationManager.getConfigInstance().setProperty
+                                ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds", 200) ;
                         
-            ConfigurationManager.getConfigInstance()
-                                .setProperty("hystrix.threadpool.default.coreSize", 8) ;
+            ConfigurationManager.getConfigInstance().setProperty
+                                ("hystrix.threadpool.default.coreSize", 8) ;
  
-            ConfigurationManager.getConfigInstance()
-                                .setProperty("hystrix.command.default.metrics.rollingPercentile.numBuckets", 60) ;
+            ConfigurationManager.getConfigInstance().setProperty
+                                ("hystrix.command.default.metrics.rollingPercentile.numBuckets", 60) ;
             */
                        
             if(timeOut != null ) {
-                System.out.println(" Overriding timeoutInMilliseconds... ");
-                  ConfigurationManager.getConfigInstance()
-                                     .setProperty("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds", timeOut ) ;
+                System.out.println(" Overriding timeoutInMilliseconds... ") ;
+                ConfigurationManager.getConfigInstance().setProperty
+                           ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds", timeOut ) ;
                   
             }
             
-             Integer defTimeOut = ConfigurationManager.getConfigInstance()
-                             .getInt("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds") ;
+             Integer defTimeOut = ConfigurationManager.getConfigInstance().getInt
+                                     ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds") ;
  
             System.out.println(" ++ timeOut for CallEndPointCommand = " + defTimeOut ) ;
            
