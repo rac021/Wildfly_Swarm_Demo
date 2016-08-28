@@ -100,7 +100,7 @@ public class HelloWorldEndpoint {
                return request.get(new GenericType<String>(){}) ;
                */
                
-	   } catch ( Exception e) {
+	   } catch ( InterruptedException | ExecutionException e ) {
                 throw new RuntimeException(" Oops, Something went wrong ! ") ;
 	     }
 	}
@@ -108,10 +108,9 @@ public class HelloWorldEndpoint {
   
         @Override
         protected String getFallback() {
-            log.error("Fallback {}", this.getFailedExecutionException().getMessage());
+            /* log.error("Fallback {}", this.getFailedExecutionException().getMessage()); */
             return " Client   :  " + url +"   is unreachable !! \n"
-                 + " Reason   :  TimeoutException \n " +
-                     this.getFailedExecutionException().getMessage() ;
+                 + " Reason   :  TimeoutException " ;
         }
   }
 
