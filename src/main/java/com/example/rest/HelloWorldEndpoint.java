@@ -61,7 +61,6 @@ public class HelloWorldEndpoint {
  
             ConfigurationManager.getConfigInstance()
                                 .setProperty("hystrix.command.default.metrics.rollingPercentile.numBuckets", 60) ;
-        
             */
                        
             if(timeOut != null ) {
@@ -85,14 +84,13 @@ public class HelloWorldEndpoint {
 	@Override
 	protected String run() throws Exception {
 		
-           try {
+         try {
 
                Future<String> data = ClientBuilder.newClient()
                                                   .target(url)
                                                   .request()
                                                   .async()
                                                   .get( new GenericType<String>(){}) ;
-               
               return data.get() ;
 	      
 	      /* 
@@ -100,9 +98,9 @@ public class HelloWorldEndpoint {
                return request.get(new GenericType<String>(){}) ;
                */
                
-	   } catch ( InterruptedException | ExecutionException e ) {
-                throw new RuntimeException(" Oops, Something went wrong ! ") ;
-	     }
+	 } catch ( InterruptedException | ExecutionException e ) {
+              throw new RuntimeException(" Oops, Something went wrong ! ") ;
+	   }
 	}
         
   
