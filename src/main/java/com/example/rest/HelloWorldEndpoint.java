@@ -53,27 +53,28 @@ public class HelloWorldEndpoint {
            
             /*
             ConfigurationManager.getConfigInstance() .setProperty
-                                 ("hystrix.command.CallEndPointCommand.circuitBreaker.requestVolumeThreshold", 30) ;
+            ("hystrix.command.CallEndPointCommand.circuitBreaker.requestVolumeThreshold", 30) ;
 
             ConfigurationManager.getConfigInstance().setProperty
-                                ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds", 200) ;
+            ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds", 200) ;
                         
             ConfigurationManager.getConfigInstance().setProperty
-                                ("hystrix.threadpool.default.coreSize", 8) ;
+            ("hystrix.threadpool.default.coreSize", 8) ;
  
             ConfigurationManager.getConfigInstance().setProperty
-                                ("hystrix.command.default.metrics.rollingPercentile.numBuckets", 60) ;
+            ("hystrix.command.default.metrics.rollingPercentile.numBuckets", 60) ;
+            
             */
                        
             if(timeOut != null ) {
                 System.out.println(" Overriding timeoutInMilliseconds... ") ;
                 ConfigurationManager.getConfigInstance().setProperty
-                           ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds", timeOut ) ;
+                ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds", timeOut ) ;
                   
             }
             
              Integer defTimeOut = ConfigurationManager.getConfigInstance().getInt
-                                     ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds") ;
+                                  ("hystrix.command.CallEndPointCommand.execution.isolation.thread.timeoutInMilliseconds") ;
  
             System.out.println(" ++ timeOut for CallEndPointCommand = " + defTimeOut ) ;
            
