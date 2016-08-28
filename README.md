@@ -18,6 +18,10 @@
      ❯   java -cp com.example.rest.Main -jar target/wildflyDemo-swarm.jar
 
          java -jar target/wildflyDemo-swarm.jar
+         
+         java -Darchaius.configurationSource.additionalUrls=file:config.properties \
+         -jar target/wildflyDemo-swarm.jar # Overriding Hystrix properties
+         
 ```  
 <ol>  <B> 2. Using Maven command : </B></ol>
 
@@ -26,13 +30,22 @@
 
 ```    
 
+ - **Description**
+ 
+   * The service takes two QueryParams :
+      
+      * **url**     : url of the service tha will be invoked .
+      
+      * **timeOut** : if the response delay exceeds the timeout an exception is raised.
+ 
  - **Test**
  
 ``` 
-     ❯  curl http://localhost:9090/rest/hello
+     ❯  curl http://localhost:8080/rest/hello/endpoint
          
-        $ Hello from WildFly Swarm Demo !
-         
+        $  Hello from WildFly Swarm Demo !
+    
+        ab -n 100 -c 2 "http://localhost:8080/rest/hello/endpoint?timeOut=2000&url=http://www.google.fr"
 ```     
 
  - ***Note :*** The default HTTP Port is **8080**
