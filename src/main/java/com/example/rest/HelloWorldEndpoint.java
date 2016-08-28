@@ -49,7 +49,7 @@ public class HelloWorldEndpoint {
 	
             super(HystrixCommandGroupKey.Factory.asKey("endPoitnData")) ;
                         
-            /* Programatic Configuration */
+            /* Programmatic Configuration */
            
             /*
             ConfigurationManager.getConfigInstance() .setProperty
