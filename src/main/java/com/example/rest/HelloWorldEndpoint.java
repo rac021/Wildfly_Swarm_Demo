@@ -88,7 +88,7 @@ public class HelloWorldEndpoint {
 	       return request.get(new GenericType<String>(){});
                          
 	   } catch ( Exception e) {
-                 return e.getMessage() ;
+                throw new RuntimeException(" Oops, Something went wrong ! ") ;
 	     }
 	}
         
