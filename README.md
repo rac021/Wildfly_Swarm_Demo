@@ -38,6 +38,7 @@
       
       * **timeOut** : if the response delay exceeds the timeout an exception is raised.
  
+
  - **Test**
  
 ``` 
@@ -50,6 +51,32 @@
 
  - ***Note :*** The default HTTP Port is **8080**
 
+
+ - **Create Docker image**
+
+<ol>  <B><i> 1 - From Dockerfile : </i></B></ol>
+
+```
+❯       $  docker build -t pinger-service .
+
+        $  docker run -it -d -p 8080 --name myPingerService pinger-service
+   
+        $  docker inspect --format '{{ .NetworkSettings.Ports }}'  pinger-service
+
+        $  curl $(hostname --all-ip-addresses | awk '{print $1}'):LOCAL_PORT/rest/hello/endpoint
+         
+```
+
+<ol>  <B><i> 2 - From Docker Hub :</i></B></ol>
+
+```
+❯       $  docker run -it -d -p 8080 --name myPingerService rac021/pinger-service
+
+        $  docker inspect --format '{{ .NetworkSettings.Ports }}'  myPingerService
+ 
+        $  curl $(hostname --all-ip-addresses | awk '{print $1}'):LOCAL_PORT//rest/hello/endpoint
+   
+```
 
 --------------------------------------------------------------
 
