@@ -1,18 +1,20 @@
 
 package com.example.rest;
 
-import com.netflix.config.ConfigurationManager;
-import com.netflix.hystrix.HystrixCommand;
-import com.netflix.hystrix.HystrixCommandGroupKey;
 import javax.ws.rs.GET;
+import org.slf4j.Logger;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.core.GenericType;
+import org.slf4j.LoggerFactory;
 import javax.ws.rs.core.Response;
-
+import java.util.concurrent.Future;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.client.ClientBuilder;
+import com.netflix.hystrix.HystrixCommand;
+import javax.ws.rs.client.Invocation.Builder;
+import com.netflix.config.ConfigurationManager;
+import com.netflix.hystrix.HystrixCommandGroupKey;
 
 
 @Path("/hello")
@@ -34,14 +36,16 @@ public class HelloWorldEndpoint {
 
   class CallEndPointCommand extends HystrixCommand<String> {
       
-        // Default URL 
-        String url = "http://localhost:8080/rest/hello";
+        /* Default URL */
+        String url = "http://localhost:8080/rest/hello/endpoint" ;
         
         Integer timeOut ;
         
+        final Logger log = LoggerFactory.getLogger(CallEndPointCommand.class);
+        
 	public CallEndPointCommand( String url, Integer timeOut) {
 	
-            super(HystrixCommandGroupKey.Factory.asKey("endPoitnData"));
+            super(HystrixCommandGroupKey.Factory.asKey("endPoitnData")) ;
                         
             /* Programatic Configuration */
            
@@ -83,20 +87,31 @@ public class HelloWorldEndpoint {
 		
            try {
 
-               Builder request = ClientBuilder.newClient().target(url).request() ;
-              
-	       return request.get(new GenericType<String>(){});
-                         
+               Future<String> data = ClientBuilder.newClient()
+                                                  .target(url)
+                                                  .request()
+                                                  .async()
+                                                  .get( new GenericType<String>(){}) ;
+               
+              return data.get() ;
+	      
+	      /* 
+	       Builder request = ClientBuilder.newClient().target(url).request() ;
+               return request.get(new GenericType<String>(){}) ;
+               */
+               
 	   } catch ( Exception e) {
                 throw new RuntimeException(" Oops, Something went wrong ! ") ;
 	     }
 	}
         
   
-         @Override
+        @Override
         protected String getFallback() {
+            log.error("Fallback {}", this.getFailedExecutionException().getMessage());
             return " Client   :  " + url +"   is unreachable !! \n"
-                 + " Reason   :  TimeoutException \n " ;
+                 + " Reason   :  TimeoutException \n " +
+                     this.getFailedExecutionException().getMessage() ;
         }
   }
 
