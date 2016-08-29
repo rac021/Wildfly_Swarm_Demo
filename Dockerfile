@@ -37,7 +37,7 @@ COPY entryPoint.sh target/wildflyDemo-swarm.jar  /opt/
 
 RUN chmod +x /opt/entryPoint.sh
 
-EXPOSE 8081 8082
+EXPOSE 8080
 
 WORKDIR /opt
 
