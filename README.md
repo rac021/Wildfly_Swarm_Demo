@@ -77,7 +77,7 @@
 
         $  docker inspect --format '{{ .NetworkSettings.Ports }}'  myPingerService
  
-        $  curl $(hostname --all-ip-addresses | awk '{print $1}'):LOCAL_PORT//rest/hello/endpoint
+        $  curl $(hostname --all-ip-addresses | awk '{print $1}'):LOCAL_PORT/rest/hello/endpoint
    
 ```
 
