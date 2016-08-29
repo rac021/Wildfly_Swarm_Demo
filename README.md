@@ -68,7 +68,7 @@
          
 ```
 
-<ol>  <B><i> 2 - From Docker Hub :</i></B></ol>
+<ol>  <B><i> 2 - From Docker Hub ( https://hub.docker.com/r/rac021/pinger-service) :</i></B></ol> 
 
 ```
 ❯       $  docker run -it -d -p 8080 --name myPingerService rac021/pinger-service
