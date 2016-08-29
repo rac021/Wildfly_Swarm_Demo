@@ -44,9 +44,11 @@
 ``` 
      ❯  curl http://localhost:8080/rest/hello/endpoint
          
-        $  Hello from WildFly Swarm Demo !
-    
+         -> Hello from WildFly Swarm Demo !
+       
         ab -n 100 -c 2 "http://localhost:8080/rest/hello/endpoint?timeOut=2000&url=http://www.google.fr"
+        
+        http://172.17.0.3:8080/rest/hello/endpoint?timeOut=2000&url=http://172.17.0.2:8081/sleep/10
 ```     
 
  - ***Note :*** The default HTTP Port is **8080**
